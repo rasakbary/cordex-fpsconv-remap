@@ -1,0 +1,54 @@
+# ---------------------------------------------------------------------------
+# Data and outputs. Nothing produced by a run belongs in the repository.
+# ---------------------------------------------------------------------------
+*.nc
+*.nc4
+*.NC
+*.tif
+*.grb
+
+# Working directories created under `output` (see config/paths.yaml)
+_srcgrids/
+_perfile_units/
+_reports/
+_fixed/
+target_grid_*.txt
+
+# Per-model run logs from GNU parallel
+logs/
+*.log
+
+# Comparison output
+remap_compare/
+compare_*/
+
+
+# ---------------------------------------------------------------------------
+# A local paths.yaml is often machine-specific. If you keep a private copy,
+# name it paths.local.yaml and pass --config-dir, or uncomment the line below.
+# The tracked config/paths.yaml should stay in the repo as a template.
+# ---------------------------------------------------------------------------
+config/paths.local.yaml
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.ipynb_checkpoints/
+.vscode/
+
+# ---------------------------------------------------------------------------
+# Editors and OS
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

@@ -1,0 +1,14 @@
+# Python dependencies for fpsremap.
+#
+# NOTE: CDO itself is NOT a Python package and is not installed by pip.
+# It must be on PATH:
+#     conda install -c conda-forge cdo
+# or load your site's CDO module. See environment.yml for a one-step setup.
+
+numpy>=1.24
+netCDF4>=1.6
+PyYAML>=6.0
+
+# Only needed for the diagnostic plots in compare_remapped.py.
+# The numerical comparison works without it.
+matplotlib>=3.6

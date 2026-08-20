@@ -1,0 +1,127 @@
+# Settings for: CORDEX-FPSCONV ALP-3 convection-permitting models
+# 
+#
+# Model's pattern rule:
+#   - `{VARIABLE}` and `{PERIOD}` are substituted at runtime.
+#   - `default` is used for every period unless a period-specific key (e.g. `rcp85`) is present
+#   - A pattern is a filename PREFIX: files are matched with
+#     basename.startswith(pattern). The trailing `_1hr_<dates>.nc` part is never hardcoded, for the date ranges.
+#
+# Skipping a model:
+#   Set `enabled: false` to skip a model.
+
+ensemble: cpm
+domain: ALP-3
+input_dir: "{archive}/ALP-3/1hr/{VARIABLE}/{PERIOD}"
+
+
+models:
+
+  BTU:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_CNRM-CERFACS-CNRM-CM5_{PERIOD}_r1i1p1_CLMcom-BTU-CCLM5-0-14_fpsconv-x2yn2-v1"
+
+  CNRM:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_CNRM-CERFACS-CNRM-CM5_{PERIOD}_r1i1p1_CNRM-AROME41t1_fpsconv-x2yn2-v1"
+
+  MOHC:
+    enabled: false  
+    default: "{VARIABLE}_ALP-3_HadGEM3-GC3.1-N512_{PERIOD}_r1i1p1_HadREM3-RA-UM10.1_fpsconv-x0n1-v1"
+
+  CMCC:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_ICHEC-EC-EARTH_{PERIOD}_r12i1p1_CLMcom-CMCC-CCLM5-0-9_x2yn2v1"
+
+  HCLIMcom:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_ICHEC-EC-EARTH_{PERIOD}_r12i1p1_HCLIMcom-HCLIM38-AROME_fpsconv-x2yn2-v1"
+
+  WEGC_WRF381DA:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_IPSL-CM5A-MR_{PERIOD}_r1i1p1_IPSL-WEGC-WRF381DA_fpsconv-x2yn2-v1"
+    rcp85: "{VARIABLE}_ALP-3_IPSL-CM5-MR_rcp85_r1i1p1_WEGC-WRF381DA_fpsconv-x2yn2-v1"
+
+  IPSL:
+    enabled: false   
+    default: "{VARIABLE}_ALP-3_IPSL-CM5A-MR_{PERIOD}_r1i1p1_IPSL-WRF381CE_fpsconv-x2yn2-v1"
+
+  KNMI:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_KNMI-EC-EARTH_{PERIOD}_r14i1p1_HCLIM38h1-AROME_fpsconv-x2yn2-v1"
+    rcp85: "{VARIABLE}_ALP-3_KNMI-EC-EARTH_rcp85_r04i1p1_HCLIM38h1-AROME_fpsconv-x2yn2-v1"
+
+  DWD:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_MOHC-HadGEM2-ES_{PERIOD}_r1i1p1_CLMcom-DWD-CCLM5-0-15_fpsconv-x2yn2-v1"
+
+  ICTP:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_MOHC-HadGEM2-ES_{PERIOD}_r1i1p1_ICTP-RegCM4-7_fpsconv-x2yn2-v1"
+
+  ETH:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_MPI-M-MPI-ESM-LR_{PERIOD}_r1i1p1_CLMcom-ETH-COSMO-crCLIM_fpsconv-x2yn2-v1"
+
+  ETH_Pompa:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_MPI-M-MPI-ESM-LR_{PERIOD}_r1i1p1_COSMO-pompa_5.0_2019.1"
+
+  JLU:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_MPI-M-MPI-ESM-LR_{PERIOD}_r1i1p1_CLMcom-JLU-CCLM5-0-15_fpsconv-x0n1-v1"
+
+  KIT:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_MPI-M-MPI-ESM-LR_{PERIOD}_r1i1p1_CLMcom-KIT-CCLM5-0-15_fpsconv-x2yn2-v1"
+
+  GERICS:
+    enabled: false  
+    default: "{VARIABLE}_ALP-3_MPI-M-MPI-ESM-LR_{PERIOD}_r1i1p1_GERICS-REMO2015_v1"
+
+  WEGC:
+    enabled: true
+    # No grid_mapping variable in these files, but rlon/rlat are present.
+    pole_override:
+      grid_north_pole_longitude: -162.0
+      grid_north_pole_latitude: 39.25
+      north_pole_grid_longitude: 0.0
+    default: "{VARIABLE}_ALP-3_MPI-M-MPI-ESM-LR_{PERIOD}_r2i1p1_CLMCom-WEGC-CCLM5-0-09_x2yn2v1"
+
+  BCCR:
+    enabled: false 
+    default: "{VARIABLE}_ALP-3_NorESM1-ME_{PERIOD}_r1i1p1_BCCR-WRF381DA_v01"
+
+  WRF381CA:
+    enabled: true
+    # The rcp85 files for this model make `cdo mergetime` fail:
+    #   grid_mapping = "rotated pole" (with space, not underscore)
+    #   _FillValue   stored as a 7-char byte string "1e+20  "
+    #   missing_value stored as a 7-char unicode string
+    default: "{VARIABLE}_ALP-3_SMHI-EC-EARTH_{PERIOD}_r12_FZJ-IBG3-WRF381CA_v1"
+    rcp85: "{VARIABLE}_ALP-3_SMHI-EC-Earth_{PERIOD}_r12_IDL-WRF381CA_v1"
+
+  WRF381DA:
+    enabled: true
+    default: "{VARIABLE}_ALP-3_SMHI-EC-Earth_{PERIOD}_r12i1p1_FZJ-IDL-WRF381DA_fpsconv-x1n2-v1"
+
+# Units Overrides
+#
+# Some source files carry a WRONG `units` attribute: the numbers are
+# physically correct but the label is not, so the unit
+# conversion in the code would apply the wrong factor.
+#
+# Only add an entry here when you have actually investigated the original files data.
+#
+# In the original archive WRF381CA and WRF381DA rcp85 pr files claim
+# "Kg m-2" / "kg m-2" but the values are a flux in kg m-2 s-1. Without the
+# override the output ends up 3600x small.
+units_override:
+  - model: WRF381CA
+    variable: pr
+    period: rcp85
+    units: "kg m-2 s-1"
+  - model: WRF381DA
+    variable: pr
+    period: rcp85
+    units: "kg m-2 s-1"
