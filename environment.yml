@@ -1,0 +1,21 @@
+# Complete environment including CDO, which does the actual remapping and
+# cannot be installed with pip.
+#
+#   conda env create -f environment.yml
+#   conda activate fpsremap
+#
+# Mamba is considerably faster if you have it:
+#   mamba env create -f environment.yml
+
+name: fpsremap
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python>=3.10
+  - cdo>=2.0          # must be on PATH
+  - numpy>=1.24
+  - netcdf4>=1.6
+  - pyyaml>=6.0
+  - matplotlib>=3.6   

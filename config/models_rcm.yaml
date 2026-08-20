@@ -1,0 +1,223 @@
+# Setting for the driving regional climate models
+
+ensemble: rcm
+
+input_dirs:
+
+  pr:
+    historical:
+      EUR-11: "{archive}/EUR-11/1hr/pr/historical"
+      WCE-11: "{archive}/processed_RCMs/pr/1hr/historical"
+      EUR-15: "{archive}/EUR-15/1hr/pr/historical"
+      ALP-12: "{archive}/ALP-12/1hr/pr/historical"
+    rcp85:
+      EUR-11: "{archive}/EUR-11/1hr/pr/rcp85"
+      WCE-11: "{archive}/processed_RCMs/pr/1hr/rcp90"   
+      EUR-15: "{archive}/EUR-15/1hr/pr/rcp85"
+      ALP-12: "{archive}/ALP-12/1hr/pr/rcp85"
+
+  tas:
+    historical:
+      EUR-11: "{archive}/EUR-11/1hr/tas/historical"
+      WCE-11: "{archive}/WCE-11/3hr/tas/historical"
+      EUR-15: "{archive}/EUR-15/1hr/tas/historical"
+      ALP-12: "{archive}/ALP-12/3hr/tas/historical"
+    rcp85:
+      EUR-11: "{archive}/EUR-11/1hr/tas/rcp85"
+      WCE-11: "{archive}/WCE-11/3hr/tas/rcp85"
+      EUR-15: "{archive}/EUR-15/1hr/tas/rcp85"
+      ALP-12: "{archive}/ALP-12/3hr/tas/rcp85"
+
+
+models:
+
+  HCLIMcom:
+    enabled: true
+    domain: ALP-12
+    patterns:
+      pr:
+        historical: "pr_ALP-12_ICHEC-EC-EARTH_historical_r12i1p1_HCLIMcom-HCLIM38-ALADIN_v1"
+        rcp85:      "pr_ALP-12_ICHEC-EC-EARTH_rcp85_r12i1p1_HCLIMcom-HCLIM38-ALADIN_v1"
+      tas:
+        historical: "tas_ALP-12_ICHEC-EC-EARTH_historical_r12i1p1_HCLIMcom-HCLIM38-ALADIN_v1"
+        rcp85:      "tas_ALP-12_ICHEC-EC-EARTH_rcp85_r12i1p1_HCLIMcom-HCLIM38-ALADIN_v1"
+
+  BTU:
+    enabled: true
+    domain: EUR-11
+    # tas for this model is 3hr resolution.
+    dir_override:
+      tas:
+        historical: "{archive}/EUR-11/3hr/tas/historical"
+        rcp85:      "{archive}/EUR-11/3hr/tas/rcp85"
+    patterns:
+      pr:
+        historical: "pr_EUR-11_CNRM-CERFACS-CNRM-CM5_historical_r1i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+        rcp85:      "pr_EUR-11_CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+      tas:
+        historical: "tas_EUR-11_CNRM-CERFACS-CNRM-CM5_historical_r1i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+        rcp85:      "tas_EUR-11_CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+
+  CNRM:
+    enabled: true
+    domain: EUR-11
+    patterns:
+      pr:
+        historical: "pr_EUR-11_CNRM-CERFACS-CNRM-CM5_historical_r1i1p1_CNRM-ALADIN63_v2"
+        rcp85:      "pr_EUR-11_CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_CNRM-ALADIN63_v2"
+      tas:
+        historical: "tas_EUR-11_CNRM-CERFACS-CNRM-CM5_historical_r1i1p1_CNRM-ALADIN63_v2"
+        rcp85:      "tas_EUR-11_CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_CNRM-ALADIN63_v2"
+
+  CMCC:
+    enabled: true
+    domain: EUR-11
+    notes: "Native time resolution is 3-hourly."
+    patterns:
+      pr:
+        historical: "pr_EUR-11_ICHEC-EC-EARTH_historical_r12i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+        rcp85:      "pr_EUR-11_ICHEC-EC-EARTH_rcp85_r12i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+      tas:
+        historical: "tas_EUR-11_ICHEC-EC-EARTH_historical_r12i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+        rcp85:      "tas_EUR-11_ICHEC-EC-EARTH_rcp85_r12i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+
+  DWD:
+    enabled: true
+    domain: EUR-11
+    notes: "Native time resolution is 3-hourly."
+    patterns:
+      pr:
+        historical: "pr_EUR-11_MOHC-HadGEM2-ES_historical_r1i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+        rcp85:      "pr_EUR-11_MOHC-HadGEM2-ES_rcp85_r1i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+      tas:
+        historical: "tas_EUR-11_MOHC-HadGEM2-ES_historical_r1i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+        rcp85:      "tas_EUR-11_MOHC-HadGEM2-ES_rcp85_r1i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+
+  ICTP:
+    enabled: true
+    domain: EUR-11
+    dir_override:
+      tas:
+        historical: "{archive}/EUR-11/3hr/tas/historical"
+        rcp85:      "{archive}/EUR-11/3hr/tas/rcp85"
+    patterns:
+      pr:
+        historical: "pr_EUR-11_MOHC-HadGEM2-ES_historical_r1i1p1_ICTP-RegCM4-7_fpsconv-x2yn1-v1"
+        rcp85:      "pr_EUR-11_MOHC-HadGEM2-ES_rcp85_r1i1p1_ICTP-RegCM4-7_fpsconv-x2yn1-v1"
+      tas:
+        historical: "tas_EUR-11_MOHC-HadGEM2-ES_historical_r1i1p1_ICTP-RegCM4-7_fpsconv-x2yn1-v1"
+        rcp85:      "tas_EUR-11_MOHC-HadGEM2-ES_rcp85_r1i1p1_ICTP-RegCM4-7_fpsconv-x2yn1-v1"
+
+  KIT:
+    enabled: true
+    domain: EUR-11
+    notes: "Native time resolution is 3-hourly."
+    patterns:
+      pr:
+        historical: "pr_EUR-11_MPI-M-MPI-ESM-LR_historical_r1i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+        rcp85:      "pr_EUR-11_MPI-M-MPI-ESM-LR_rcp85_r1i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+      tas:
+        historical: "tas_EUR-11_MPI-M-MPI-ESM-LR_historical_r1i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+        rcp85:      "tas_EUR-11_MPI-M-MPI-ESM-LR_rcp85_r1i1p1_CLMcom-CCLM4-8-17_cordex-x0n1-v1"
+
+  ETH:
+    enabled: true
+    domain: EUR-11
+    patterns:
+      pr:
+        historical: "pr_EUR-11_MPI-M-MPI-ESM-LR_historical_r1i1p1_CLMcom-ETH-COSMO-crCLIM_fpsconv-x0n1-v1"
+        rcp85:      "pr_EUR-11_MPI-M-MPI-ESM-LR_rcp85_r1i1p1_CLMcom-ETH-COSMO-crCLIM_fpsconv-x0n1-v1"
+      tas:
+        historical: "tas_EUR-11_MPI-M-MPI-ESM-LR_historical_r1i1p1_CLMcom-ETH-COSMO-crCLIM_fpsconv-x0n1-v1"
+        rcp85:      "tas_EUR-11_MPI-M-MPI-ESM-LR_rcp85_r1i1p1_CLMcom-ETH-COSMO-crCLIM_fpsconv-x0n1-v1"
+
+  ETH_Pompa:
+    enabled: true
+    domain: EUR-11
+    patterns:
+      pr:
+        historical: "pr_EUR-11_MPI-M-MPI-ESM-LR_historical_r1i1p1_COSMO-pompa_5.0_2019.1"
+        rcp85:      "pr_EUR-11_MPI-M-MPI-ESM-LR_rcp85_r1i1p1_COSMO-pompa_5.0_2019.1"
+      tas:
+        historical: "tas_EUR-11_MPI-M-MPI-ESM-LR_historical_r1i1p1_COSMO-pompa_5.0_2019.1"
+        rcp85:      "tas_EUR-11_MPI-M-MPI-ESM-LR_rcp85_r1i1p1_COSMO-pompa_5.0_2019.1"
+
+  GERICS:
+    enabled: true
+    domain: EUR-11
+    # This model has only the NEAR-future for rcp85 scenario.
+    unavailable:
+      - {variable: pr,  period: rcp85}
+      - {variable: tas, period: rcp85}
+    patterns:
+      pr:
+        historical: "pr_EUR-11_MPI-M-MPI-ESM-LR_historical_r1i1p1_GERICS-REMO2015_v1"
+        rcp85:      "pr_EUR-11_MPI-M-MPI-ESM-LR_rcp85_r1i1p1_GERICS-REMO2015_v1"
+      tas:
+        historical: "tas_EUR-11_MPI-M-MPI-ESM-LR_historical_r1i1p1_GERICS-REMO2015_v1"
+        rcp85:      "tas_EUR-11_MPI-M-MPI-ESM-LR_rcp85_r1i1p1_GERICS-REMO2015_v1"
+
+  KNMI:
+    enabled: true
+    domain: WCE-11
+    notes: "tas is 3-hourly (WCE-11/3hr tree). rcp85 uses member r4, historical r14."
+    patterns:
+      pr:
+        historical: "pr_WCE-11_KNMI-EC-EARTH_historical_r14i1p1_KNMI-RACMO23E_v1"
+        rcp85:      "pr_WCE-11_KNMI-EC-EARTH_rcp85_r4i1p1_KNMI-RACMO23E_v1"
+      tas:
+        historical: "tas_WCE-11_KNMI-EC-EARTH_historical_r14i1p1_KNMI-RACMO23E_v1"
+        rcp85:      "tas_WCE-11_KNMI-EC-EARTH_rcp85_r4i1p1_KNMI-RACMO23E_v1"
+
+  WEGC_WRF381DA:
+    enabled: true
+    domain: EUR-15
+    notes: "rcp85 drops the IPSL- institute prefix from the RCM token."
+    patterns:
+      pr:
+        historical: "pr_EUR-15_IPSL-CM5A-MR_historical_r1i1p1_IPSL-WEGC-WRF381DA_v1"
+        rcp85:      "pr_EUR-15_IPSL-CM5A-MR_rcp85_r1i1p1_WEGC-WRF381DA_v1"
+      tas:
+        historical: "tas_EUR-15_IPSL-CM5A-MR_historical_r1i1p1_IPSL-WEGC-WRF381DA_v1"
+        rcp85:      "tas_EUR-15_IPSL-CM5A-MR_rcp85_r1i1p1_WEGC-WRF381DA_v1"
+
+  IPSL:
+    enabled: true
+    domain: EUR-15
+    unavailable:
+      - {variable: tas, period: historical}   
+      - {variable: tas, period: rcp85}
+    patterns:
+      pr:
+        historical: "pr_EUR-15_IPSL-CM5A-MR_historical_r1i1p1_IPSL-WRF381CE_v1"
+        rcp85:      "pr_EUR-15_IPSL-CM5A-MR_rcp85_r1i1p1_IPSL-WRF381CE_v1"
+
+  WRF381CA:
+    enabled: true
+    domain: EUR-15
+    notes: >-
+      Institute token changes between periods and variables
+      (FZJ-IBG3 vs FZJ-IDL). Source files may carry string-typed _FillValue
+      attributes; remap.py sanitises these automatically.
+    patterns:
+      pr:
+        historical: "pr_EUR-15_SMHI-EC-EARTH_historical_r12_FZJ-IBG3-WRF381CA_v1"
+        rcp85:      "pr_EUR-15_SMHI-EC-EARTH_rcp85_r12i1p1_FZJ-IDL-WRF381CA_fpsconv-x0n1-v1"
+      tas:
+        historical: "tas_EUR-15_SMHI-EC-EARTH_historical_r12i1p1_FZJ-IBG3-WRF381CA_v1"
+        rcp85:      "tas_EUR-15_SMHI-EC-Earth_rcp85_r12_IDL-WRF381CA_v1"
+
+  WRF381DA:
+    enabled: true
+    domain: EUR-15
+    notes: >-
+      pr and tas differ in EC-Earth capitalisation.
+    patterns:
+      pr:
+        historical: "pr_EUR-15_SMHI-EC-Earth_historical_r12i1p1_FZJ-IDL-WRF381DA_fpsconv-x1n2-v1"
+        rcp85:      "pr_EUR-15_SMHI-EC-Earth_rcp85_r12_FZJ-IDL-WRF381DA_fpsconv-x1n2-v1"
+      tas:
+        historical: "tas_EUR-15_SMHI-EC-EARTH_historical_r12i1p1_FZJ-IDL-WRF381DA_fpsconv-x0n1-v1"
+        rcp85:      "tas_EUR-15_SMHI-EC-Earth_rcp85_r12_FZJ-IDL-WRF381DA_fpsconv-x1n2-v1"
+
+units_override: []

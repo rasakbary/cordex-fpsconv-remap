@@ -1,0 +1,34 @@
+
+# Target grid definition (EPSG:4326 regular lon/lat)
+
+grids:
+
+  gar_cpm_0275:
+    description: >-
+      Greater Alpine Region, 0.0275 deg (~3 km). Target for the ALP-3
+      convection-permitting ensemble. 437 x 183 cells.
+      Covers lon 4.6025..16.5925, lat 43.25..48.255.
+    gridtype: lonlat
+    xsize: 437
+    ysize: 183
+    xfirst: 4.6025
+    xinc: 0.0275
+    yfirst: 43.25
+    yinc: 0.0275
+
+  gar_rcm_011:
+    description: >-
+      Greater Alpine Region, 0.11 deg (~12 km). Target for the driving RCM
+      ensemble (EUR-11 / WCE-11 / EUR-15 / ALP-12). 136 x 92 cells.
+      Covers lon 1.9625..16.8125, lat 39.95..49.96.
+    gridtype: lonlat
+    xsize: 136
+    ysize: 92
+    xfirst: 1.9625
+    xinc: 0.11
+    yfirst: 39.95
+    yinc: 0.11
+
+defaults:
+  cpm: gar_cpm_0275
+  rcm: gar_rcm_011
