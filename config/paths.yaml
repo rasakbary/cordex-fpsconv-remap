@@ -1,0 +1,40 @@
+
+# If you run the repository on your mashine this is the ONLY file you must edit!
+# Everything else (model settingss, grids) remain the same.
+#
+# All paths in models_cpm.yaml / models_rcm.yaml are written relative to the
+# roots defined here, using {archive} / {output} / {scratch} placeholders.
+
+roots:
+  # Root directory where the CORDEX-FPSCONV data archive exist.
+  archive: /root-to-archive/CORDEX-FPSCONV
+
+  # Where merged + remapped NetCDF output is written.
+  output: /root-to-output-directory/rakbary
+
+  # the target-grid description file is written here: a short text file
+  # naming the output grid, which is passed to `cdo remapcon`.
+  scratch: /home/rakbary
+
+
+# temporary sub-directories for intermediate steps:
+#
+# `perfile` and `fixed` hold full copies of input files and can therefore
+# reach tens of GB while a model is running (they are deleted afterwards
+# unless clean_intermediate is false). 
+work:
+  srcgrids: _srcgrids        # per-model CDO source-grid descriptions (text)
+  perfile: _perfile_units    # unit-converted copies of input files (LARGE, it's temporary)
+  reports: _reports          # inspection JSON/TXT reports (small)
+  fixed: _fixed              # rebuilt copies of files with bad attributes (LARGE, it's temporary)
+
+
+options:
+  # Delete merged-native / regridded-raw intermediates once the final file is written.
+  clean_intermediate: true
+
+  # Rewrite per-model source-grid files even if they already exist.
+  force_rewrite_srcgrids: true
+
+  # Final output compression (CDO -f nc4 -z zip_<level>, includes shuffle).
+  deflate_level: 5

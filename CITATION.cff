@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use these scripts, please cite them as below."
+
+title: "cordex-fpsconv-remap: remapping CORDEX-FPSCONV model output onto a common grid"
+abstract: >-
+  Command-line scripts for remapping CORDEX-FPSCONV convection-permitting model
+  (CPM) and driving regional climate model (RCM) output onto a common regular
+  latitude/longitude grid over the Greater Alpine Region. The scripts inspect the
+  native grid metadata of each model, build the source-grid description that CDO
+  requires, harmonise units, merge the files of each model, and apply first-order
+  conservative remapping with CDO.
+
+type: software
+authors:
+  - family-names: Akbary
+    given-names: Rashid
+    email: rashid.akbary93@gmail.com
+    orcid: "https://orcid.org/0000-0002-0118-7298"
+
+license: MIT
+version: 1.0.0
+date-released: "2026-08-21"
+repository-code: "https://github.com/rasakbary/cordex-fpsconv-remap"
+# doi: "10.5281/zenodo.XXXXXXX"
+
+keywords:
+  - CORDEX
+  - CORDEX-FPSCONV
+  - convection-permitting model
+  - regional climate model
+  - remapping
+  - regridding
+  - conservative remapping
+  - CDO
+  - NetCDF
+  - precipitation
+  - Greater Alpine Region
